@@ -7,7 +7,7 @@ file_json = json.load(file)
 
 name = "teste novo"
 
-value = "teste action"
+value = "teste action 2"
 
 verify = False
 emp = False
