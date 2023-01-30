@@ -5,9 +5,9 @@ file = open(r'teste.json')
 file_json = json.load(file)
 
 
-name = "teste4"
+name = "teste novo"
 
-value = "teste novo"
+value = "teste action"
 
 verify = False
 emp = False
