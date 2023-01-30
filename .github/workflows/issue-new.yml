@@ -16,15 +16,11 @@ jobs:
         with:
           python-version: 3.8
       - name: execute script
-        run: python main.py
-  
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - name: actions
-        uses: actions/github-script@v6
-      - name: teste
         run: |
-          git add .
-          git commit -m "Adding or updating registry"
-          git push
+          python main.py
+          git --version
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git status
+          git tag
+          git describe
