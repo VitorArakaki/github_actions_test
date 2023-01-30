@@ -1,0 +1,31 @@
+name: teste
+description: Sample description
+title: "teste"
+labels: ["heimdall"]
+assignees:
+  - ${{github.author}}
+body:
+  - type: markdown
+    attributes:
+      value: |
+        teste
+
+  - type: input
+    id: name
+    attributes:
+      label: "nome"
+      description: "desc" 
+      placeholder: aaaa
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: "nome"
+      description: "desc" 
+      options:
+        - att
+        - regis
+    validations:
+      required: true
