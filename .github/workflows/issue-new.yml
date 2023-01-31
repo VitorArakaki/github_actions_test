@@ -22,7 +22,11 @@ jobs:
         with:
           body: ${{ steps.read_issue_body.output.body }}
 
-      - run: echo "${{ toJSON(steps.parse.outputs.data) }}
+      - name: print values
+        id: print
+        run: |
+          valorJson = toJSON(steps.parse.outputs.data)
+          echo "${{ valorJson }}"
 
 # name: "Creating or updating registry"
 
