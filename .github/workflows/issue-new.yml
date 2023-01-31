@@ -17,7 +17,7 @@ jobs:
       - name: execute script
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
-          echo "Issue name: ${{ github.event.issue.body.id }}"
+          echo "${{ JSON.stringify(github.event.issue.body ) }}"
           python main.py
           git --version
           git config user.name "GitHub Actions Bot"
