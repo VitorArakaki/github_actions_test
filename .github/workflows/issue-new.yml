@@ -24,9 +24,9 @@ jobs:
 
       - name: print values
         id: print
-        run: |
-          valorJson = toJSON(steps.parse.outputs.data)
-          echo "${{ valorJson }}"
+        env:
+          VALOR_JSON: ${{ toJSON(steps.parse.outputs.data) }}
+        run: echo "${VALOR_JSON}"
 
 # name: "Creating or updating registry"
 
