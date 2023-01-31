@@ -10,18 +10,30 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v3
-      - name: setup python
-        uses: actions/setup-python@v4
+      - name: get issue info
+        uses: peter-murray/issue-forms-body-parser@v2.0.0
         with:
-          python-version: 3.8
-      - name: execute script
+          issue_id: ${{ github.event.issue.number }}
+          separator: '###'
+          label_marker_start: '>>'
+          label_marker_end: '<<'
+      - name: Show parsed data JSON
         run: |
-          echo "Issue title: ${{ github.event.issue.title }}"
-          echo "${{ JSON.stringify(github.event.issue.body ) }}"
-          python main.py
-          git --version
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git add .
-          git commit -m "changes"
-          git push
+          echo "${{ steps.parse.outputs.payload }}"
+
+
+      # - name: setup python
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: 3.8
+      # - name: execute script
+      #   run: |
+      #     echo "Issue title: ${{ github.event.issue.title }}"
+      #     echo "${{ JSON.stringify(github.event.issue.body ) }}"
+      #     python main.py
+      #     git --version
+      #     git config user.name "GitHub Actions Bot"
+      #     git config user.email "<>"
+      #     git add .
+      #     git commit -m "changes"
+      #     git push
