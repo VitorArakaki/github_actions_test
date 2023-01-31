@@ -1,11 +1,8 @@
 name: Issue Forms Body Parser
 
 on:
-  workflow_dispatch:
-    inputs:
-      issue_number:
-        type: string
-        required: true
+  issues:
+    types: [opened]
 env:
   GH_TOKEN: ${{ github.token }}
 
@@ -16,7 +13,7 @@ jobs:
       - name: Fetch the issue
         id: read_issue_body
         run:
-          echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
+          echo "body=$(gh issue view ${{ github.event.issue_number }} --repo ${{
           github.repo }} --json body --jq '.body')" >> $GITHUB_OUTPUT
 
       - name: Issue Forms Body Parser
